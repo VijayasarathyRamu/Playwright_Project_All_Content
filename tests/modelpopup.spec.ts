@@ -20,7 +20,7 @@ test("custom assertion",async({page})=>{
 
     //Prompt
     page.once("dialog",async(dialog)=>{
-        // expect(dialog.message).toContain("confirm");
+        expect(dialog.message).toContain("confirm");
         await dialog.accept("hello frds");
     });
     await page.click('button[onclick="jsPrompt()"]');
