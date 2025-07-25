@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Switching Example</title>
+  <style>
+    .tab {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-right: 4px;
+      background: #eee;
+      border: 1px solid #bbb;
+      border-bottom: none;
+      cursor: pointer;
+      outline: none;
+      font-weight: bold;
+    }
+    .tab.active {
+      background: #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .panel {
+      display: none;
+      border: 1px solid #bbb;
+      padding: 16px;
+      background: #fff;
+    }
+    .panel.active {
+      display: block;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('.panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active from all tabs and panels
+          tabs.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+          // Add active to clicked tab and matching panel
+          tab.classList.add('active');
+          const target = tab.getAttribute('data-target');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+      // Activate first tab by default
+      tabs[0].click();
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <button class="tab" data-target="profile-panel" id="profile-tab">Profile</button>
+    <button class="tab" data-target="settings-panel" id="settings-tab">Settings</button>
+  </div>
+  <div id="profile-panel" class="panel">
+    <h2>Profile</h2>
+    <p>This is your profile panel.</p>
+  </div>
+  <div id="settings-panel" class="panel">
+    <h2>Settings</h2>
+    <p>This is your settings panel.</p>
+  </div>
+</body>
+</html>

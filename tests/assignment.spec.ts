@@ -15,4 +15,7 @@ test('Run all users sequentially in one browser', async ({ page }) => {
   }
   // await page.pause();
   //now check the git hub
+
+  // npx playwright test assignment.spec.ts --project=firefox --headed --debug 
+  //this the command to check manually
 });
